@@ -34,7 +34,7 @@
 ```
 📁 Stock Management API
 ├── 🔐 Auth Module           # Autenticación y autorización
-├── 📦 Products Module       # Gestión de productos y stock  
+├── 📦 Products Module       # Gestión de productos y stock
 ├── 💳 Subscriptions Module  # Planes y pagos
 ├── 🛒 MercadoLibre Module   # Integración OAuth2 y sync
 └── 🏥 Health Module         # Monitoreo del sistema
@@ -56,8 +56,8 @@ npm: >= 8.0.0
 
 ```bash
 # Clonar proyecto
-git clone <repository-url>
-cd stock-management-app
+git clone git@github.com:CRISHFAS/Stock-Management-API.git
+cd Stock-Management-API
 
 # Instalar dependencias
 npm install
@@ -114,6 +114,7 @@ npm run start:prod
 ### 1. Acceso a la Documentación
 
 Una vez iniciada la aplicación, accede a:
+
 - **API:** http://localhost:3000/api
 - **Swagger UI:** http://localhost:3000/api/docs
 
@@ -146,6 +147,7 @@ Content-Type: application/json
 ```
 
 **Respuesta:**
+
 ```json
 {
   "success": true,
@@ -210,6 +212,7 @@ Authorization: Bearer <token>
 ```
 
 **Respuesta:**
+
 ```json
 {
   "success": true,
@@ -226,7 +229,7 @@ Authorization: Bearer <token>
       "plan": "premium",
       "name": "Plan Premium",
       "price": 20000,
-      "currency": "ARS", 
+      "currency": "ARS",
       "maxProducts": 500,
       "features": ["Todo lo básico", "Integración ML", "Reportes avanzados"]
     }
@@ -257,6 +260,7 @@ Authorization: Bearer <token>
 ```
 
 **Respuesta:**
+
 ```json
 {
   "success": true,
@@ -286,18 +290,18 @@ Content-Type: application/json
 
 ### Roles de Usuario
 
-| Rol | Descripción | Permisos |
-|-----|-------------|----------|
-| **user** | Usuario estándar | Gestión de sus propios productos |
-| **admin** | Administrador | Acceso completo al sistema |
+| Rol       | Descripción      | Permisos                         |
+| --------- | ---------------- | -------------------------------- |
+| **user**  | Usuario estándar | Gestión de sus propios productos |
+| **admin** | Administrador    | Acceso completo al sistema       |
 
 ### Planes de Suscripción
 
-| Plan | Precio | Productos | Características |
-|------|--------|-----------|----------------|
-| **Basic** | $10.000/mes | 100 | Stock básico, alertas, soporte email |
-| **Premium** | $20.000/mes | 500 | Todo lo básico + ML + reportes |
-| **Enterprise** | $30.000/mes | Ilimitado | Todo + API + soporte 24/7 |
+| Plan           | Precio      | Productos | Características                      |
+| -------------- | ----------- | --------- | ------------------------------------ |
+| **Basic**      | $10.000/mes | 100       | Stock básico, alertas, soporte email |
+| **Premium**    | $20.000/mes | 500       | Todo lo básico + ML + reportes       |
+| **Enterprise** | $30.000/mes | Ilimitado | Todo + API + soporte 24/7            |
 
 ### Restricciones por Plan
 
@@ -312,12 +316,14 @@ Content-Type: application/json
 ### Endpoints Principales
 
 #### 🔐 Autenticación
+
 - `POST /api/auth/register` - Registro de usuario
 - `POST /api/auth/login` - Login
 - `GET /api/auth/profile` - Perfil del usuario
 - `GET /api/auth/users` - Listar usuarios (admin)
 
 #### 📦 Productos
+
 - `GET /api/products` - Listar productos con filtros
 - `POST /api/products` - Crear producto
 - `GET /api/products/:id` - Obtener producto por ID
@@ -327,6 +333,7 @@ Content-Type: application/json
 - `GET /api/products/low-stock` - Productos con stock bajo
 
 #### 💳 Suscripciones
+
 - `GET /api/subscriptions/plans` - Ver planes disponibles
 - `POST /api/subscriptions` - Crear suscripción
 - `GET /api/subscriptions/me` - Mi suscripción actual
@@ -335,6 +342,7 @@ Content-Type: application/json
 - `GET /api/subscriptions/admin/stats` - Estadísticas (admin)
 
 #### 🛒 MercadoLibre
+
 - `GET /api/mercadolibre/auth` - Iniciar OAuth2
 - `GET /api/mercadolibre/callback` - Callback OAuth2
 - `GET /api/mercadolibre/products` - Productos de ML
@@ -382,12 +390,12 @@ El sistema incluye usuarios demo para pruebas:
 
 ```javascript
 // Admin
-email: "admin@stockmanagement.com"
-password: "Admin123!"
+email: 'admin@stockmanagement.com';
+password: 'Admin123!';
 
-// Usuario Demo  
-email: "demo@stockmanagement.com"
-password: "Demo123!"
+// Usuario Demo
+email: 'demo@stockmanagement.com';
+password: 'Demo123!';
 ```
 
 ### Datos de Prueba
@@ -453,21 +461,27 @@ password: "Demo123!"
 ### Problemas Comunes
 
 #### 1. Error de conexión ML
+
 ```bash
 Error: No tienes una conexión activa con MercadoLibre
 ```
+
 **Solución:** Ejecutar GET /api/mercadolibre/auth y completar OAuth2
 
 #### 2. Token expirado
+
 ```bash
 Error: Token JWT inválido o expirado
 ```
+
 **Solución:** Hacer login nuevamente para obtener token fresh
 
 #### 3. Plan insuficiente
+
 ```bash
 Error: Esta funcionalidad requiere Plan Premium o superior
 ```
+
 **Solución:** Upgradeaer suscripción via POST /api/subscriptions
 
 ### Contacto
@@ -487,6 +501,7 @@ MIT License - Ver archivo LICENSE para detalles.
 ## 🙏 Agradecimientos
 
 Desarrollado con ❤️ usando:
+
 - [NestJS](https://nestjs.com/) - Framework Node.js progresivo
 - [MercadoLibre Developers](https://developers.mercadolibre.com.ar/) - API de integración
 - [Swagger](https://swagger.io/) - Documentación API
