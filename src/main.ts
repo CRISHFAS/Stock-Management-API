@@ -73,7 +73,7 @@ async function bootstrap() {
     .addServer('http://localhost:3000', 'Desarrollo Local')
     .setContact(
       'Equipo de Desarrollo',
-      'https://github.com/tu-usuario/stock-management',
+      'https://github.com/CRISHFAS/Stock-Management-API',
       'dev@tuempresa.com',
     )
     .setLicense('MIT', 'https://opensource.org/licenses/MIT')
