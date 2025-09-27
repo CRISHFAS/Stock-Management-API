@@ -13,7 +13,11 @@ async function bootstrap() {
 
   // CORS habilitado para desarrollo
   app.enableCors({
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    origin: [
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'https://stock-management-api-lwh1.onrender.com', // 🔥 agrega esto
+    ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
@@ -70,6 +74,7 @@ async function bootstrap() {
       },
       'JWT-auth',
     )
+    .addServer('https://stock-management-api-lwh1.onrender.com', 'Producción')
     .addServer('http://localhost:3000', 'Desarrollo Local')
     .setContact(
       'Equipo de Desarrollo',
